@@ -8,8 +8,8 @@ $view = $_GET["page"] ?? "productos";
 
 try {
     $pdo = (new Conexion())->conectar();
-    $products = (new Product())->getProductsByPage($page, 3, $pdo);
-    $totalPaginas = ceil(count((new Product())->getProductos($pdo)) / 3);
+    $products = (new Product())->getProductsByPage($page, 9, $pdo);
+    $totalPaginas = ceil(count((new Product())->getProducts($pdo)) / 3);
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -23,6 +23,9 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oh! Tea</title>
 
+    <link rel="icon" type="image/webp" href="src/assets/favicom-logo.webp">
+
+    <!--- Boostrap --->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 <body>

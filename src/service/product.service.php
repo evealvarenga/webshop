@@ -16,18 +16,18 @@ class Product
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
-        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
-        return $productos;
+        $products = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
+        return $products;
     }
 
-    public function getProductos($db)
+    public function getproducts($db)
     {
         $sql = "SELECT * FROM products";
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
-        return $productos;
+        $products = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
+        return $products;
     }
 
     public function getProductoById($db, $id)
@@ -57,10 +57,10 @@ class Product
 
     public function borrar($pdo)
     {
-        if (!empty($this->img) && file_exists("../img/productos/" . $this->img) && !unlink("../img/productos/" . $this->img)) {
+        if (!empty($this->img) && file_exists("../img/products/" . $this->img) && !unlink("../img/products/" . $this->img)) {
             throw new Exception("No se pudo borrar");
         }
-        $sql = "DELETE FROM `products` WHERE `productos`.`id` = :id";
+        $sql = "DELETE FROM `products` WHERE `products`.`id` = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ":id" => $this->id
@@ -69,7 +69,7 @@ class Product
 
     public function editar($pdo)
     {
-        $sql = "UPDATE `productos` SET `name` = :name, `price` = :price, `img` = :img, `category` = :category, `description` = :description WHERE `productos`.`id` = :id";
+        $sql = "UPDATE `products` SET `name` = :name, `price` = :price, `img` = :img, `category` = :category, `description` = :description WHERE `products`.`id` = :id";
 
         $stmt = $pdo->prepare($sql);
 
