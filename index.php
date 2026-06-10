@@ -1,3 +1,21 @@
+<?php 
+/*
+require_once "src/config/bd.php";
+require_once "src/service/product.php";
+
+$page = $_GET["pagina"] ?? 1;
+$view = $_GET["page"] ?? "productos";
+
+try {
+    $pdo = (new Conexion())->conectar();
+    $productos = (new Producto())->getProductosByPage($page, 3, $pdo);
+    $totalPaginas = ceil(count((new Producto())->getProductos($pdo)) / 3);
+} catch (Exception $e) {
+    echo $e->getMessage();
+}
+*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
