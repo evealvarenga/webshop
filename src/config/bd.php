@@ -1,9 +1,10 @@
 <?php 
+
 class Conexion{
     public $servidor = "localhost";
     public $usuario = "root";
     public $pass = "";
-    public $dbname = "acn2ap";
+    public $dbname = "webshop";
 
     public function conectar(){
         try {

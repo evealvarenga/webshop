@@ -1,19 +1,19 @@
-<?php foreach ($productos as $producto) { ?>
+<?php foreach ($products as $product) { ?>
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img class="img-fluid" style="max-width: 100px;" src="src/assets/products/<?= $product->img ?>" alt="">
     <div class="card-body">
-      <h5 class="card-title"><?= $producto->nombre ?></h5>
-      <p class="card-text"><?= $producto->getPrecio() ?></p>
+      <h5 class="card-title"><?= $product->name ?></h5>
+      <p class="card-text"><?= $product->getPrice() ?></p>
     </div>
     
     <ul class="list-group list-group-flush">
       <li class="list-group-item"></li>
-      <li class="list-group-item"><a class="btn btn-warning" href="index.php?page=modificar_producto&id=<?= $producto->id ?>">Modificar</a></li>
-      <li class="list-group-item"><a class="btn btn-danger" href="index.php?page=borrar_producto&id=<?= $producto->id ?>">Borrar</a></li>
+      <li class="list-group-item"><a class="btn btn-warning" href="index.php?page=modificar_product&id=<?= $product->id ?>">Modificar</a></li>
+      <li class="list-group-item"><a class="btn btn-danger" href="index.php?page=borrar_product&id=<?= $product->id ?>">Borrar</a></li>
     </ul>
     <div class="card-body">
       <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=Detalle&id=<?= $producto->id ?>">Ver</a></a>
+      <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=Detalle&id=<?= $product->id ?>">Ver</a></a>
     </div>
   </div>
 <?php } ?>

@@ -1,66 +1,66 @@
 <?php
 
-class Producto
+class Product
 {
     public $id;
-    public $nombre;
-    private $precio;
-    public $imagen;
-    public $categoria;
-    public $descripcion;
+    public $name;
+    private $price;
+    public $img;
+    public $category;
+    public $description;
 
-    public function getProductosByPage($pagina, $cantidad, $pdo)
+    public function getProductsByPage($pagina, $cantidad, $pdo)
     {
         $offset = ( $pagina - 1 ) * $cantidad;
-        $sql = "SELECT * FROM productos LIMIT $cantidad OFFSET $offset";
+        $sql = "SELECT * FROM products LIMIT $cantidad OFFSET $offset";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
 
-        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Producto::class);
+        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
         return $productos;
     }
 
     public function getProductos($db)
     {
-        $sql = "SELECT * FROM productos";
+        $sql = "SELECT * FROM products";
         $stmt = $db->prepare($sql);
         $stmt->execute();
 
-        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Producto::class);
+        $productos = $stmt->fetchAll(PDO::FETCH_CLASS, Product::class);
         return $productos;
     }
 
     public function getProductoById($db, $id)
     {
-        $sql = "SELECT * FROM productos WHERE id = $id";
+        $sql = "SELECT * FROM products WHERE id = $id";
         $stmt = $db->prepare($sql);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Producto::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
         $producto = $stmt->fetch();
         return $producto;
     }
 
     public function guardar($pdo)
     {
-        $sql = "INSERT INTO `productos` (`id`, `nombre`, `precio`, `imagen`, `categoria`, `descripcion`) VALUES (NULL, :nombre, :precio, :imagen, :categoria, :descripcion)";
+        $sql = "INSERT INTO `products` (`id`, `name`, `price`, `img`, `category`, `description`) VALUES (NULL, :name, :price, :img, :category, :description)";
 
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
-            ":nombre" => $this->nombre,
-            ":precio" => $this->precio,
-            ":imagen" => $this->imagen,
-            ":categoria" => $this->categoria,
-            ":descripcion" => $this->descripcion
+            ":name" => $this->name,
+            ":price" => $this->price,
+            ":img" => $this->img,
+            ":category" => $this->category,
+            ":description" => $this->description
         ]);
     }
 
     public function borrar($pdo)
     {
-        if (!empty($this->imagen) && file_exists("../img/productos/" . $this->imagen) && !unlink("../img/productos/" . $this->imagen)) {
+        if (!empty($this->img) && file_exists("../img/productos/" . $this->img) && !unlink("../img/productos/" . $this->img)) {
             throw new Exception("No se pudo borrar");
         }
-        $sql = "DELETE FROM `productos` WHERE `productos`.`id` = :id";
+        $sql = "DELETE FROM `products` WHERE `productos`.`id` = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ":id" => $this->id
@@ -69,27 +69,27 @@ class Producto
 
     public function editar($pdo)
     {
-        $sql = "UPDATE `productos` SET `nombre` = :nombre, `precio` = :precio, `imagen` = :imagen, `categoria` = :categoria, `descripcion` = :descripcion WHERE `productos`.`id` = :id";
+        $sql = "UPDATE `productos` SET `name` = :name, `price` = :price, `img` = :img, `category` = :category, `description` = :description WHERE `productos`.`id` = :id";
 
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
-            ":nombre" => $this->nombre,
-            ":precio" => $this->precio,
-            ":imagen" => $this->imagen,
-            ":categoria" => $this->categoria,
-            ":descripcion" => $this->descripcion,
+            ":name" => $this->name,
+            ":price" => $this->price,
+            ":img" => $this->img,
+            ":category" => $this->category,
+            ":description" => $this->description,
             ":id" => $this->id
         ]);
     }
 
-    public function getPrecio($flag = true)
+    public function getPrice()
     {
-        return $flag ? "$" . number_format($this->precio, 2, ",", ".") : $this->precio;
+        return "$" . number_format($this->price, 2, ",", ".");
     }
 
-    public function setPrecio($precio)
+    public function setprice($price)
     {
-        $this->precio = $precio;
+        $this->price = $price;
     }
 }
