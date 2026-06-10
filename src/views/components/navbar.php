@@ -12,6 +12,7 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?page=products">Productos</a>
         </li>
+        <!--
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -23,6 +24,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        -->
       </ul>
         <button class="btn btn-outline-success" type="submit" disabled>Login</button>
     </div>
