@@ -30,7 +30,7 @@ class Product
         return $products;
     }
 
-    public function getProductoById($db, $id)
+    public function getProductById($db, $id)
     {
         $sql = "SELECT * FROM products WHERE id = $id";
         $stmt = $db->prepare($sql);

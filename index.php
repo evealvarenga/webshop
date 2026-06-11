@@ -4,12 +4,12 @@ require_once "src/config/bd.php";
 require_once "src/service/product.service.php";
 
 $page = $_GET["pagina"] ?? 1;
-$view = $_GET["page"] ?? "productos";
+$view = $_GET["page"] ?? "products";
 
 try {
     $pdo = (new Conexion())->conectar();
     $products = (new Product())->getProductsByPage($page, 9, $pdo);
-    $totalPaginas = ceil(count((new Product())->getProducts($pdo)) / 3);
+    $totalPaginas = ceil(count((new Product())->getProducts($pdo)) / 9);
 } catch (Exception $e) {
     echo $e->getMessage();
 }

@@ -1,20 +1,31 @@
-<?php foreach ($products as $product) { ?>
-  <div class="card" style="width: 18rem;">
-    <img class="img-fluid" style="max-width: 100px;" src="src/assets/products/<?= $product->img ?>" alt="">
-    <div class="card-body">
-      <h5 class="card-title"><?= $product->name ?></h5>
-      <p class="card-text"><?= $product->getPrice() ?></p>
+<div class="container text-center">
+  <div class="row row-cols-3">
+
+  <?php foreach ($products as $product) { ?>
+  <div class="col">
+    <div class="card" style="width: 18rem;">
+      <center><img class="img-fluid" style="max-width: 100px;" src="src/assets/products/<?= $product->img ?>" alt=""></center>
+      <div class="card-body">
+        <h5 class="card-title"><?= $product->name ?></h5>
+        <p class="card-text"><?= $product->getPrice() ?></p>
+      </div>
+        
+      <ul class="list-group list-group-flush">
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <a href="index.php?page=changeProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-warning">Modificar</button></a>
+          <a href="index.php?page=deleteProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-danger">Borrar</button></a>
+        </div>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=Detalle&id=<?= $product->id ?>">Ver</a></a>
+      </div>
     </div>
-    
-    <ul class="list-group list-group-flush">
-      <a class="btn btn-warning" href="index.php?page=modificar_product&id=<?= $product->id ?>">Modificar</a>
-      <a class="btn btn-danger" href="index.php?page=borrar_product&id=<?= $product->id ?>">Borrar</a>
-    </ul>
-    <div class="card-body">
-      <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=Detalle&id=<?= $product->id ?>">Ver</a></a>
     </div>
-  </div>
-<?php } ?>
+  <?php } ?>
+</div>
+</div>
+
+
 <div class="d-flex justify-content-center">
     <nav aria-label="Page navigation">
         <ul class="pagination">
