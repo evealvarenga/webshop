@@ -1,5 +1,5 @@
-<div class="container text-center">
-  <div class="row row-cols-3">
+<div class="container text-center p-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
 
   <?php foreach ($products as $product) { ?>
   <div class="col">
@@ -17,7 +17,7 @@
         </div>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=Detalle&id=<?= $product->id ?>">Ver</a></a>
+        <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=detailProduct&id=<?= $product->id ?>">Ver</a></a>
       </div>
     </div>
     </div>
