@@ -9,7 +9,7 @@
       <center><img class="img-fluid" style="max-width: 100px;" src="src/assets/products/<?= $product->img ?>" alt=""></center>
       <div class="card-body">
         <h5 class="card-title"><?= $product->name ?></h5>
-        <p class="card-text"><?= $product->getPrice() ?></p>
+        <p class="card-text"><?= $product->getPrice(true) ?></p>
       </div>
         
       <ul class="list-group list-group-flush ">

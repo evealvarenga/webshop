@@ -83,12 +83,12 @@ class Product
         ]);
     }
 
-    public function getPrice()
+    public function getPrice($flag = true)
     {
-        return "$" . number_format($this->price, 2, ",", ".");
+        return $flag ? "$" . number_format($this->price, 2, ",", ".") : $this->price;
     }
 
-    public function setprice($price)
+    public function setPrice($price)
     {
         $this->price = $price;
     }

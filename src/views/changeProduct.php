@@ -19,14 +19,14 @@ $product = (new Product())->getProductById($pdo, $id);
             name="name"
             minlength="3"
             maxlength="50"
-            pattern="[A-Za-z0-9\s]+"
+            pattern="[A-Za-z0-9áéíóúÁÉÍÓÚñÑ\s]+"
             title="Solo se aceptan letras o espacios"
             value="<?= $product->name ?>"
             required>   
     </div>
     <div>
         <label>Precio:</label>
-        <input type="text" name="price" minlength="3" maxlength="50" required value="<?=  $product->getPrice() ?>">
+        <input type="text" name="price" minlength="3" maxlength="50" required value="<?=  $product->getPrice(false) ?>">
     </div>
     <div>
         <label>Categoria:</label>
