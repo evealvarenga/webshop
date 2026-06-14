@@ -1,3 +1,8 @@
+:root{
+    --primary:#b887b6;
+    --text:#6d6d6d;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -5,12 +10,47 @@ body {
     min-height: 100vh;
 }
 
+/* ABOUT SECTION */
+
+.hero-overlay {
+    position: relative;
+    z-index: 2; /* queda arriba */
+}
+
+.hero-overlay img{
+    width:100%;
+}
+
+.hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    z-index: 1; /* queda abajo */
+}
+
+.hero-wave img{
+    width:100%;
+    display:block;
+    margin-top: auto;
+}
+
+.contact-title{
+    color:var(--primary);
+    font-weight:700;
+    font-size:3rem;
+    line-height:1;
+}
+
+
+
+/*   FOOTER   */
 .footer-custom {
     background:url("../assets/footer-Vector.svg") no-repeat center top;
     height:520px;
     color: white;
     position: relative;
-    height: 520px;
     padding-top: 205px;
     margin-top: auto;
 }
