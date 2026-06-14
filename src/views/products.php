@@ -1,3 +1,5 @@
+<h1 class="h1-products"> Productos </h1>
+
 <div class="container text-center p-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -10,8 +12,8 @@
         <p class="card-text"><?= $product->getPrice() ?></p>
       </div>
         
-      <ul class="list-group list-group-flush">
-        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <ul class="list-group list-group-flush ">
+        <div class="btn-group justify-content-center" role="group" aria-label="Basic mixed styles example">
           <a href="index.php?page=changeProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-warning">Modificar</button></a>
           <a href="index.php?page=deleteProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-danger">Borrar</button></a>
         </div>

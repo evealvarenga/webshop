@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    min-height: 100vh;
+}
+
 .footer-custom {
     background:url("../assets/footer-Vector.svg") no-repeat center top;
     height:520px;
@@ -5,6 +12,7 @@
     position: relative;
     height: 520px;
     padding-top: 205px;
+    margin-top: auto;
 }
 
 .footer-logo {

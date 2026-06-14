@@ -1,4 +1,4 @@
-<footer class="footer-custom">
+<footer class="footer-custom sticky-bottom">
     <!-- Contenido -->
     <div class="container py-5">
         <div class="row align-items-center text-center text-md-start">
@@ -12,8 +12,8 @@
             <!-- Menú -->
             <div class="col-md-4 mb-4 mb-md-0">
                 <ul class="footer-links list-unstyled">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Menú Oh!Tea</a></li>
+                    <li><a href="index.php?page=home">Inicio</a></li>
+                    <li><a href="index.php?page=products">Menú Oh!Tea</a></li>
                     <li><a href="#">Sobre Oh!Tea</a></li>
                     <li><a href="#">Sucursales</a></li>
                 </ul>
