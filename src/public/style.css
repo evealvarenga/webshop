@@ -170,6 +170,31 @@ body {
     line-height:1;
 }
 
+/*  CONTACT SECTION */
+
+.contact-conteiner{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 75%;
+    padding: 25px;   
+    margin: auto; 
+    margin-top: 40px;
+}
+
+.contact-form{
+    width: 45%;
+}
+
+.contact-form, .contact-img{
+    margin: 5px;
+}
+
+.contact-img img{
+    width:60%;
+    display:block;
+    margin-top: auto;
+}
+
 
 
 /*   FOOTER   */

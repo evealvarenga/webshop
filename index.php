@@ -1,5 +1,4 @@
 <?php 
-
 require_once "src/config/bd.php";
 require_once "src/service/product.service.php";
 
@@ -13,7 +12,6 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
 ?>
 
 <!DOCTYPE html>

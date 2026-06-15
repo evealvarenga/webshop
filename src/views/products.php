@@ -48,7 +48,6 @@
 </div>
 </div>
 
-
 <div class="d-flex justify-content-center">
     <nav aria-label="Page navigation">
         <ul class="pagination">
