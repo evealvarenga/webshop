@@ -18,3 +18,17 @@
         </div>
     </div>
 </section>
+
+<section class="container py-3">
+    <div class="row align-items-center">
+        <div class="col-lg-4">
+            <img src="src/assets/banner1.webp" class="img-fluid rounded" alt="">
+        </div>
+        <div class="col-lg-4">
+            <img src="src/assets/banner2.webp" class="img-fluid rounded" alt="">
+        </div>
+        <div class="col-lg-4">
+            <img src="src/assets/banner3.webp" class="img-fluid rounded" alt="">
+        </div>
+    </div>
+</section>
