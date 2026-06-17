@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="src/assets/favicom-logo.webp" style="max-width: 50px;" alt=""></a>
+    <a class="navbar-brand" href="#"><img src="src/assets/favicom-logo.webp" style="max-width: 50px;" alt="" srcset=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,7 +12,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?page=products">Productos</a>
         </li>
-        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php?page=about">Sobre Oh!Tea</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php?page=contact">Contacto</a>
+        </li>
         <!--
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,7 +32,7 @@
         </li>
         -->
       </ul>
-        <button class="btn btn-outline-success" type="submit" disabled>Login</button>
+        <button class="btn btn-outline-success" type="submit"><a class="nav-link active" aria-current="page" href="index.php?page=login">Login</a></button>
     </div>
   </div>
 </nav>

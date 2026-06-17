@@ -10,7 +10,7 @@ $product = (new Product())->getProductById($pdo, $id);
         <div class="d-flex justify-content-center gap-3 mb-3" >
             <img src="src/assets/products/<?= $product->img ?>" width="200px" alt="">
         </div>
-        <form action="actions/borrar_product_acc.php" method="get" class="d-flex justify-content-center gap-3">
+        <form action="src/controllers/product.controller.php?action=deleteProduct" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center gap-3">
             <input type="hidden" name="id" value="<?= $product->id ?>">
             <button type="submit" class="btn btn-danger">Si</button>
             <a href="index.php" class="btn btn-success">No</a>
