@@ -1,3 +1,10 @@
+<?php
+
+$id = $_GET["id"] ?? 0;
+$product = (new Product())->getProductById($pdo, $id);
+
+
+?>
 <form action="src/controllers/product.controller.php?action=updateProduct" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $product->id ?>">
     <div>

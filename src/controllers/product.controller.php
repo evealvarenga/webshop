@@ -25,6 +25,13 @@ class ProductController {
             $product-> description = $description;
             $product-> img = $img;
             $product-> guardar($pdo);
+
+            session_start();
+            $_SESSION['toast'] = [
+                'type' => 'success',
+                'message' => 'Producto agregado correctamente'
+            ];
+
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
@@ -43,6 +50,13 @@ class ProductController {
             if( !empty($product) ){
                 $product->borrar($pdo);
             }
+
+            session_start();
+            $_SESSION['toast'] = [
+                'type' => 'success',
+                'message' => 'Producto eliminado correctamente'
+            ];
+
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
@@ -81,12 +95,20 @@ class ProductController {
             }
 
             $product->editar($pdo);
+
+            session_start();
+            $_SESSION['toast'] = [
+                'type' => 'success',
+                'message' => 'Producto modificado correctamente'
+            ];
+            
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
             header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el producto");
             exit();
         }
+        
     }
 }
 
