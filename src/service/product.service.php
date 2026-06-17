@@ -57,7 +57,7 @@ class Product
 
     public function borrar($pdo)
     {
-        if (!empty($this->img) && file_exists("../img/products/" . $this->img) && !unlink("../img/products/" . $this->img)) {
+        if (!empty($this->img) && file_exists("../assets/products/" . $this->img) && !unlink("../assets/products/" . $this->img)) {
             throw new Exception("No se pudo borrar");
         }
         $sql = "DELETE FROM `products` WHERE `products`.`id` = :id";

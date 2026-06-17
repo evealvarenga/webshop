@@ -6,17 +6,17 @@ require_once "../service/product.service.php";
 
 class ProductController {
 
-    public function newProduct($name, $price, $category, $description, $id, $tmp_name, $original_name) {
+    public function newProduct($name, $price, $category, $description, $tmp_name, $original_name) {
 
         try {
             if( strlen($name) == 0 || strlen($price) == 0 || strlen($category) == 0 || strlen($description) == 0 ){
-                throw new Exception("El campo ... esta vacio");
+                throw new Exception("Uno de los campos está vacio");
             }
 
             $pdo = (new Conexion())->conectar();
 
             $img = uniqid()."-".$original_name;
-            move_uploaded_file($tmp_name, "../img/products/$img");
+            move_uploaded_file($tmp_name, "../assets/products/$img");
 
             $product = new Product();
             $product-> name = $name;
@@ -25,11 +25,10 @@ class ProductController {
             $product-> description = $description;
             $product-> img = $img;
             $product-> guardar($pdo);
-
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
-            header("Location: /www/webshop/index.php?page=nuevo_product&error=No se pudo agregar el product");
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo agregar el producto");
             exit();
         }
     }
@@ -48,17 +47,15 @@ class ProductController {
             exit();
         } catch (Exception $e) {
             die($e->getMessage());
-            /*header("Location: /www/webshop/index.php?page=404&error=No se pudo eliminar el producto");
-            exit();*/
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo eliminar el producto");
+            exit();
         }
     }
 
     public function updateProduct($name, $price, $category, $description, $id, $tmp_name, $original_name) {
-        // img
-
         try {
             if (strlen($name) == 0 || strlen($price) == 0 || strlen($category) == 0 || strlen($description) == 0) {
-                throw new Exception("El campo ... esta vacio");
+                throw new Exception("Uno de los campos está vacio");
             }
 
             $pdo = (new Conexion())->conectar();
@@ -74,9 +71,9 @@ class ProductController {
 
                 $img = uniqid() . "-" . $original_name;
 
-                move_uploaded_file($tmp_name, "../img/products/$img");
+                move_uploaded_file($tmp_name, "../assets/products/$img");
 
-                if (!empty($product->img) && file_exists("../img/products/" . $product->img) && !unlink("../img/products/" . $product->img)) {
+                if (!empty($product->img) && file_exists("../assets/products/" . $product->img) && !unlink("../assets/products/" . $product->img)) {
                     throw new Exception("No se pudo borrar");
                 }
 
@@ -87,7 +84,7 @@ class ProductController {
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
-            header("Location: /www/webshop/index.php?page=404&error=No se pudo eliminar el producto");
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el producto");
             exit();
         }
     }
@@ -104,11 +101,10 @@ switch ($action) {
         $price = htmlspecialchars(trim($_POST["price"]));
         $category = htmlspecialchars(trim($_POST["category"]));
         $description = htmlspecialchars(trim($_POST["description"]));
-        $id = htmlspecialchars(trim($_POST["id"]));
         $tmp_name = $_FILES["img"]["tmp_name"];
         $original_name = $_FILES["img"]["name"];
 
-        $controller->newProduct($name, $price, $category, $description, $id, $tmp_name, $original_name);
+        $controller->newProduct($name, $price, $category, $description, $tmp_name, $original_name);
         break;
     case 'deleteProduct':
         $controller->deleteProduct();

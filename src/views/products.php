@@ -6,20 +6,17 @@
                 <span class="title-main-products">Macha Latte</span><br>
                 <span class="title-secondary-products">con perlas de tapioca</span>
             </h1>
-
             <p>
                 Un cremoso latte que combina
                 el rico y té <strong>Matcha</strong>
                 con <strong>leche</strong>.
             </p>
-
-            <a href="index.php?page=detailProduct&id=11" class="btn-hero-products">
-                Ver producto
-            </a>
-
+            <a href="index.php?page=detailProduct&id=11" class="btn-hero-products">Ver producto → </a>
         </div>
     </div>
 </section>
+
+<a href="index.php?page=newProduct" class="btn-hero-products"> Crear nuevo producto →</a>
 
 <div class="container text-center p-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
