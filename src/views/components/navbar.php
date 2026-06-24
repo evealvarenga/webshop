@@ -32,7 +32,7 @@
         </li>
         -->
       </ul>
-        <button class="btn btn-outline-success" type="submit"><a class="nav-link active" aria-current="page" href="index.php?page=login">Login</a></button>
+        <button class="btn btn-outline-success" type="submit"><a class="nav-link active" aria-current="page" href="index.php?page=login"><i class="bi bi-person"></i></a></button>
     </div>
   </div>
 </nav>
