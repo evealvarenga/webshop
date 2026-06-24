@@ -46,12 +46,9 @@ endif;
         </div>
     </div>
 </section>
-
-<a href="index.php?page=newProduct" class="btn-hero-products"> Crear nuevo producto →</a>
-
+    <a href="index.php?page=newProduct" class="btn-new-products"> Crear nuevo producto →</a>
 <div class="container text-center p-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
-
   <?php foreach ($products as $product) { ?>
   <div class="col">
     <div class="card" style="width: 18rem;">
@@ -63,12 +60,12 @@ endif;
         
       <ul class="list-group list-group-flush ">
         <div class="btn-group justify-content-center" role="group" aria-label="Basic mixed styles example">
-          <a href="index.php?page=changeProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-warning">Modificar</button></a>
-          <a href="index.php?page=deleteProduct&id=<?= $product->id ?>"><button type="button" class="btn btn-danger">Borrar</button></a>
+          <a href="index.php?page=changeProduct&id=<?= $product->id ?>" class="btn-products"><i class="bi bi-gear"></i></a>
+          <a href="index.php?page=deleteProduct&id=<?= $product->id ?>" class="btn-products"><i class="bi bi-trash3"></i></a>
         </div>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link"><a class="btn btn-primary" href="index.php?page=detailProduct&id=<?= $product->id ?>">Ver</a></a>
+        <a href="index.php?page=detailProduct&id=<?= $product->id ?>" class="btn-products">Ver</a>
       </div>
     </div>
     </div>
