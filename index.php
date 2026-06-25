@@ -4,14 +4,6 @@ require_once "src/service/product.service.php";
 
 $page = $_GET["pagina"] ?? 1;
 $view = $_GET["page"] ?? "products";
-
-try {
-    $pdo = (new Conexion())->conectar();
-    $products = (new Product())->getProductsByPage($page, 9, $pdo);
-    $totalPaginas = ceil(count((new Product())->getProducts($pdo)) / 9);
-} catch (Exception $e) {
-    echo $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>
@@ -35,12 +27,20 @@ try {
 </head>
 <body>
     <?php require_once "src/views/components/navbar.php" ?>
-    
-    <?php if (file_exists("src/views/$view.php")) { 
-        require_once "src/views/$view.php";
-    } else {
-        require_once "src/views/404.php";
-    } ?>
+    <?php 
+        try {
+            $pdo = (new Conexion())->conectar();
+            $products = (new Product())->getProductsByPage($page, 9, $pdo);
+            $totalPaginas = ceil(count((new Product())->getProducts($pdo)) / 9);
+            if (file_exists("src/views/$view.php")) { 
+                require_once "src/views/$view.php";
+            } else {
+                require_once "src/views/404.php";
+            }
+        } catch (Throwable $th) {
+            require_once "src/views/404.php";
+        }
+    ?>
 
     <?php require_once "src/views/components/footer.php" ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

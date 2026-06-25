@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   `img` varchar(255) NOT NULL,
@@ -74,28 +74,3 @@ INSERT INTO `products` (`id`, `name`, `price`, `img`, `category`, `description`)
 (31, 'Black sugar', 7900, '153917.png', 'Bubble Team', 'Té rojo con leche más azúcar negra y perlas de tapioca.'),
 (32, 'Bubble pistacho', 9400, '153929.png', 'Bubble Team', 'Té con leche y perlas de tapioca sabor pistacho.');
 COMMIT;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `productos`
---
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

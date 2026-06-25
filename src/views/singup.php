@@ -16,10 +16,9 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="floatingInputGrid" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Nunca compartiremos tu mail con nadie más.</div>
+            <div class="form-floating g-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Constraseña</label>
