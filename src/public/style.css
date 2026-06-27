@@ -250,6 +250,22 @@ body {
     line-height:1;
 }
 
+/*   404    */
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen{
+    max-width: 50%;
+}
+
+.imagen img{
+    max-width: 80%;
+}
+
 /*  CONTACT SECTION */
 
 .contact-conteiner{
