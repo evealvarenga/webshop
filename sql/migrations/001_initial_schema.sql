@@ -74,3 +74,24 @@ INSERT INTO `products` (`id`, `name`, `price`, `img`, `category`, `description`)
 (31, 'Black sugar', 7900, '153917.png', 'Bubble Team', 'Té rojo con leche más azúcar negra y perlas de tapioca.'),
 (32, 'Bubble pistacho', 9400, '153929.png', 'Bubble Team', 'Té con leche y perlas de tapioca sabor pistacho.');
 COMMIT;
+
+DROP TABLE IF EXISTS `clients`;
+CREATE TABLE `clients` (
+    `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
+    `dni` VARCHAR(20) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    `admin` BOOLEAN NOT NULL DEFAULT FALSE,
+    `birthday` DATE NOT NULL,
+    `favProduct` INT(10) UNSIGNED NOT NULL,
+
+    PRIMARY KEY (`id`),
+
+    CONSTRAINT `fk_client_product`
+        FOREIGN KEY (`favProduct`)
+        REFERENCES `products`(`id`)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_general_ci;
