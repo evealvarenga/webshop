@@ -11,6 +11,22 @@ class Client
     public $birthday;
     public $favProduct;
 
+    /** GETTERS **/
+    public function getEmail(){return $this->email;}
+    public function getPassword(){return $this->password;}
+    public function getAdmin(){return $this->admin;}
+    public function getId(){return $this->id;}
+
+    /** SETTERS **/
+    //@return  self
+    public function setEmail($email){$this->email = $email;return $this;}
+    //@return  self
+    public function setPassword($password){$this->password = $password;return $this;}
+    //@return  self
+    public function setRol($rol){$this->rol = $rol;return $this;}
+
+    /** FUNCIONES **/
+
     /*public function getClientsByPage($pagina, $cantidad, $pdo)
     {
         $offset = ( $pagina - 1 ) * $cantidad;
@@ -21,33 +37,36 @@ class Client
         $clients = $stmt->fetchAll(PDO::FETCH_CLASS, Client::class);
         return $Clients;
     }
-
+ */
     public function getClients($db)
     {
         $sql = "SELECT * FROM clients";
         $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Client::class);
         $stmt->execute();
 
-        $clients = $stmt->fetchAll(PDO::FETCH_CLASS, Client::class);
+        $clients = $stmt->fetchAll();
         return $clients;
     }
 
-    public function getClientsById($db, $id)
+    public function getClientByEmail($pdo, $email)
     {
-        $sql = "SELECT * FROM clients WHERE id = $id";
-        $stmt = $db->prepare($sql);
+        $sql = "SELECT * FROM clients WHERE email = '$email' ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Client::class);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Clients::class);
         $client = $stmt->fetch();
+
         return $client;
     }
-    */
+   
     public function guardar($pdo)
     {
         $sql = "INSERT INTO `clients` (`id`, `name`, `email`, `dni`, `password`, `admin`, `birthday`, `favProduct`) VALUES (NULL, :name, :email, :dni, :password, '0', :birthday, :favProduct)";
 
+
         $stmt = $pdo->prepare($sql);
-        
+              
         $stmt->execute([
             ":name" => $this->name,
             ":email" => $this->email,
@@ -56,7 +75,11 @@ class Client
             ":birthday" => $this->birthday,
             ":favProduct" => $this->favProduct
         ]);
+        
     }
+
+
+
     /*
     public function borrar($pdo)
     {

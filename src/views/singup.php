@@ -21,6 +21,10 @@
                 <input type="text" name="name" class="form-control" id="floatingInputGrid">
             </div>
             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">DNI</label>
+                <input type="number" name="dni" class="form-control" id="floatingInputGrid">
+            </div>
+            <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Correo</label>
                 <input type="email" name="email" class="form-control" id="floatingInputGrid">
             </div>

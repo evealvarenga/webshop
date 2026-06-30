@@ -32,7 +32,12 @@
         </li>
         -->
       </ul>
-        <a class="nav-link active" aria-current="page" href="index.php?page=login"><button class="btn btn-outline-success" type="submit"><i class="bi bi-person"></i></button></a>
+        <?php if (isset($_SESSION["user"])) { ?>
+          <a class="nav-link" href="src/controllers/client.controller.php?action=logout"><button class="btn btn-outline-success" type="submit"><i class="bi bi-box-arrow-right"></i></button></a>
+        <?php } else { ?>
+          <a class="nav-link active" aria-current="page" href="index.php?page=login"><button class="btn btn-outline-success" type="submit"><i class="bi bi-person"></i></button></a>
+        <?php } ?>
+        <!--<a class="nav-link active" aria-current="page" href="index.php?page=login"><button class="btn btn-outline-success" type="submit"><i class="bi bi-person"></i></button></a>-->
     </div>
   </div>
 </nav>
