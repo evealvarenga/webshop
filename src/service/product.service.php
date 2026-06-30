@@ -9,6 +9,9 @@ class Product
     public $category;
     public $description;
 
+    /** GETTERS **/
+    public function getName(){return $this->name;}
+
     public function getProductsByPage($pagina, $cantidad, $pdo)
     {
         $offset = ( $pagina - 1 ) * $cantidad;

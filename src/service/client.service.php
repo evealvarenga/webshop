@@ -12,9 +12,13 @@ class Client
     public $favProduct;
 
     /** GETTERS **/
+    public function getName(){return $this->name;}
     public function getEmail(){return $this->email;}
+    public function getDni(){return $this->dni;}
     public function getPassword(){return $this->password;}
     public function getAdmin(){return $this->admin;}
+    public function getBD(){return $this->birthday;}
+    public function getFP(){return $this->favProduct;}
     public function getId(){return $this->id;}
 
     /** SETTERS **/

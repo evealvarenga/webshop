@@ -1,6 +1,7 @@
 <?php 
 require_once "src/config/bd.php";
 require_once "src/service/product.service.php";
+require_once "src/service/client.service.php";
 require_once "src/utils/utils.php";
 
 date_default_timezone_set("America/Argentina/Buenos_Aires");
