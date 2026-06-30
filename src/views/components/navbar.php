@@ -33,7 +33,15 @@
         -->
       </ul>
         <?php if (isset($_SESSION["user"])) { ?>
-          <a class="nav-link" href="src/controllers/client.controller.php?action=logout"><button class="btn btn-outline-success" type="submit"><i class="bi bi-box-arrow-right"></i></button></a>
+          <div class="btn-group dropstart">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-lines-fill"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" aria-current="page" href="index.php?page=profile">Perfil</a></li>
+              <li><a class="dropdown-item" href="src/controllers/client.controller.php?action=logout">Cerrar sesión</a></li>
+            </ul>
+          </div>
         <?php } else { ?>
           <a class="nav-link active" aria-current="page" href="index.php?page=login"><button class="btn btn-outline-success" type="submit"><i class="bi bi-person"></i></button></a>
         <?php } ?>

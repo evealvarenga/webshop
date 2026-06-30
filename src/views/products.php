@@ -1,9 +1,7 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {session_start();}
+if(isset($_SESSION['toast'])): $toast = $_SESSION['toast'];?>
 
-if(isset($_SESSION['toast'])):
-    $toast = $_SESSION['toast'];
-?>
 <div class="toast-container position-fixed top-0 end-0 p-3">
     <div id="liveToast" class="toast" role="alert">
         <div class="toast-header">

@@ -275,19 +275,18 @@ body {
     padding: 15px;   
     margin: auto; 
     margin-top: 40px;
+
+    justify-content: center;
+    align-items: center;
 }
 
-.contact-form{
-    max-width: 45%;
-    min-height: 30%;
-}
 
 .contact-form, .contact-img{
-    margin: 5px;
+    margin: 20px;
 }
 
 .contact-img img{
-    max-width:60%;
+    height:700px;
     display:block;
     margin-top: auto;
 }
