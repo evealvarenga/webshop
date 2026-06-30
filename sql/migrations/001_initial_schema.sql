@@ -20,13 +20,12 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `webshop`
 --
-
+DROP TABLE IF EXISTS `clients`;
+DROP TABLE IF EXISTS `products`;
 -- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `products`
 --
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -75,9 +74,9 @@ INSERT INTO `products` (`id`, `name`, `price`, `img`, `category`, `description`)
 (32, 'Bubble pistacho', 9400, '153929.png', 'Bubble Team', 'Té con leche y perlas de tapioca sabor pistacho.');
 COMMIT;
 
-DROP TABLE IF EXISTS `clients`;
 CREATE TABLE `clients` (
     `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL UNIQUE,
     `dni` VARCHAR(20) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL,

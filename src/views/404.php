@@ -2,9 +2,6 @@
 $error = $_GET["error"] ?? ""
 ?>
 <?php if( strlen($error) > 0 ){ ?>
-<span class="text-center text-danger" >
-    <?= $error ?>
-</span>
 <?php } ?>
 <section class="container py-4">
     <div class="contenedor">
