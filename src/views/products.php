@@ -44,7 +44,6 @@ endif;
         </div>
     </div>
 </section>
-    <a href="index.php?page=newProduct" class="btn-new-products"> Crear nuevo producto →</a>
 <div class="container text-center p-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
   <?php foreach ($products as $product) { ?>

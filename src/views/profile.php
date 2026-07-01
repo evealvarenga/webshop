@@ -5,16 +5,49 @@
 ?>
 <section class = profile>
 <?php if (isAdmin()) { ?>
-    <div class="form">
-        <div class="menu">
-            <ul>
-                <li>Modificar productos</li>
-                <li>Lista de usuarios</li>
-                <li>Modificar perfil propio</li>
-            </ul>
-        </div>
-        <div class="main-content">
-            <h1>Perfil de administrador</h1> 
+    <div class="container-profile">
+        <h2 class="header-profile">
+            <span></span> Perfil de administrador
+        </h2>
+        <div class="profile-card">
+            <!-- Columna izquierda -->
+            <div class="left">
+                <a href="index.php?page=newProduct"><button class="btn-edit">
+                    <i class="bi bi-pencil-fill"></i>
+                    Crear nuevo producto
+                </button></a>
+                <a href="index.php?page=allProducts"><button class="btn-edit">
+                    <i class="bi bi-pencil-fill"></i>
+                    Administrar productos
+                </button></a>
+                <a href="index.php?page=allClients"><button class="btn-edit">
+                    <i class="bi bi-pencil-fill"></i>
+                    Verificar usuarios
+                </button></a>
+            </div>
+            <!-- Columna derecha -->
+            <div class="right">
+                <div class="info">
+                    <h4>Nombre</h4>
+                    <p><?=$user->getName()?></p>
+                </div>
+                <div class="info">
+                    <h4>Email</h4>
+                    <p><?=$user->getEmail()?></p>
+                </div>
+                <div class="info">
+                    <h4>Cumpleaños</h4>
+                    <p><?=$user->getBD()?></p>
+                </div>
+                <div class="info">
+                    <h4>Bebida favorita</h4>
+                    <p><?=$product->getName()?></p>
+                </div>
+                <button class="btn-edit">
+                    <i class="bi bi-pencil-fill"></i>
+                    Editar perfil
+                </button>
+            </div>
         </div>
     </div>
 <?php } else { ?>
@@ -27,9 +60,6 @@
             <div class="left">
                 <div class="photo">
                     <img src="https://placehold.co/250x250" alt="Foto Perfil">
-                    <button class="camera">
-                        <i class="bi bi-camera-fill"></i>
-                    </button>
                 </div>
             </div>
             <!-- Columna derecha -->
