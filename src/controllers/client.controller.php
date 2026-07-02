@@ -25,7 +25,7 @@ class ClientController {
 
             
             $client-> guardar($pdo);
-            login($email,$password);
+            $this->login($email,$password);
             exit();
         } catch (Exception $e) {
             header("Location: /www/webshop/index.php?page=404&error=No se pudo crear el usuario.");
