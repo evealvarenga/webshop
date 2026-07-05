@@ -1,6 +1,15 @@
-<?php
-$pdo = (new Conexion())->conectar();
-$users = (new Clients())->getClients($pdo);
+<?php 
+    try {
+        $pdo = (new Conexion())->conectar();
+        $allusers = (new Client())->getClients($pdo);
+        if (file_exists("src/views/$view.php")) { 
+            require_once "src/views/$view.php";
+        } else {
+            require_once "src/views/404.php";
+        }
+    } catch (Throwable $th) {
+        require_once "src/views/404.php";
+    }
 ?>
 
 <section class = profile>
@@ -8,26 +17,28 @@ $users = (new Clients())->getClients($pdo);
         <h2 class="header-profile">
             <span></span> Administrador de usuarios
         </h2>
-        <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Tipo de usuario</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($users as $user) { ?>
+        <div class="profile-card">
+            <table class="table">
+            <thead>
                 <tr>
-                    <td>ID: <?= $user->getId() ?></td>
-                    <td><?= $user->getName() ?></td>
-                    <td><?= $user->getAdmin() ?></td>
-                    <td>
-                    </td>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Tipo de usuario</th>
+                    <th>Acciones</th>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>  
+            </thead>
+            <tbody>
+                <?php foreach ($allusers as $user) { ?>
+                    <tr>
+                        <td>ID: <?= $user->getId() ?></td>
+                        <td><?= $user->getName() ?></td>
+                        <td><?php if($user->getAdmin()){echo "Administrador";} else {echo "Usuario";} ?></td>
+                        <td>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>  
     </div>
 </section>

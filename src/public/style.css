@@ -395,19 +395,6 @@ body {
     background:#ececf6;
 }
 
-.camera{
-    position:absolute;
-    top:10px;
-    left:10px;
-    border:none;
-    background:white;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,.2);
-}
-
 .right{
     flex:1;
 }

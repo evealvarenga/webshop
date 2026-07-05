@@ -1,16 +1,16 @@
 <?php 
-        try {
-            $pdo = (new Conexion())->conectar();
-            $allProducts = (new Product())->getProducts($pdo);
-            if (file_exists("src/views/$view.php")) { 
-                require_once "src/views/$view.php";
-            } else {
-                require_once "src/views/404.php";
-            }
-        } catch (Throwable $th) {
+    try {
+        $pdo = (new Conexion())->conectar();
+        $allProducts = (new Product())->getProducts($pdo);
+        if (file_exists("src/views/$view.php")) { 
+            require_once "src/views/$view.php";
+        } else {
             require_once "src/views/404.php";
         }
-    ?>
+    } catch (Throwable $th) {
+        require_once "src/views/404.php";
+    }
+?>
 
 <div class="form">
     <div class="form-carga-modf">

@@ -54,13 +54,6 @@ endif;
         <h5 class="card-title"><?= $product->name ?></h5>
         <p class="card-text"><?= $product->getPrice(true) ?></p>
       </div>
-        
-      <ul class="list-group list-group-flush ">
-        <div class="btn-group justify-content-center" role="group" aria-label="Basic mixed styles example">
-          <a href="index.php?page=changeProduct&id=<?= $product->id ?>" class="btn-products"><i class="bi bi-gear"></i></a>
-          <a href="index.php?page=deleteProduct&id=<?= $product->id ?>" class="btn-products"><i class="bi bi-trash3"></i></a>
-        </div>
-      </ul>
       <div class="card-body">
         <a href="index.php?page=detailProduct&id=<?= $product->id ?>" class="btn-products">Ver</a>
       </div>
