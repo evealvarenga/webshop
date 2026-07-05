@@ -46,10 +46,9 @@ class Client
     {
         $sql = "SELECT * FROM clients";
         $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Client::class);
-        $stmt->execute();
+        $stmt->execute();       
 
-        $clients = $stmt->fetchAll();
+        $clients = $stmt->fetchAll(PDO::FETCH_CLASS, Client::class);
         return $clients;
     }
 
