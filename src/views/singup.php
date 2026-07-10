@@ -12,9 +12,12 @@
     }
 ?>
 
-<div class="form">
-    <div class="form-carga-modf">
-        <h1>Crear un nuevo usuario</h1>
+
+<div class="container-profile">
+    <h2 class="header-profile">
+        <span></span> Crear un nuevo usuario
+    </h2>
+    <div class="profile-card">
         <form action="src/controllers/client.controller.php?action=newClient" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Nombre</label>
@@ -48,7 +51,7 @@
                     } ?>
                 </select>
             </div>
-            <button type="submit">Crear cuenta</button>
+            <button type="submit" class= "btn-edit">Crear cuenta</button>
         </form>
     </div>
 </div>
