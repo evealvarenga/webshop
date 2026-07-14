@@ -22,26 +22,27 @@ class Client
     public function getId(){return $this->id;}
 
     /** SETTERS **/
-    //@return  self
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */
     public function setEmail($email){$this->email = $email;return $this;}
-    //@return  self
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */
     public function setPassword($password){$this->password = $password;return $this;}
-    //@return  self
+    /**
+     * Set the value of rol
+     *
+     * @return  self
+     */
     public function setRol($rol){$this->rol = $rol;return $this;}
 
     /** FUNCIONES **/
 
-    /*public function getClientsByPage($pagina, $cantidad, $pdo)
-    {
-        $offset = ( $pagina - 1 ) * $cantidad;
-        $sql = "SELECT * FROM clients LIMIT $cantidad OFFSET $offset";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-
-        $clients = $stmt->fetchAll(PDO::FETCH_CLASS, Client::class);
-        return $Clients;
-    }
- */
     public function getClients($db)
     {
         $sql = "SELECT * FROM clients";

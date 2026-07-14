@@ -19,7 +19,7 @@ class ClientController {
             $client-> name = $name;
             $client-> dni = $dni;
             $client-> email = $email;
-            $client-> password = $password;
+            $client-> setPassword(password_hash($password, PASSWORD_DEFAULT));
             $client-> birthday = $birthday;
             $client-> favProduct = $favProduct;
 
@@ -38,7 +38,7 @@ class ClientController {
         $pdo = (new Conexion())->conectar();
         $client = ( new Client() )->getClientByEmail($pdo, $email);
 
-        if ($client && $client->getPassword() == $password) {
+        if ($client && password_verify($password, $client->getPassword())) {
             $_SESSION["user"] = [
                 "email" => $client->getEmail(),
                 "admin" => $client->getAdmin()
@@ -48,7 +48,6 @@ class ClientController {
         } else {
             header("Location: /www/webshop/index.php?page=404&error=Usuario o contraseña incorrecto");
         }
-
 
     }
 
@@ -100,7 +99,7 @@ class ClientController {
             $client->name = $name;
             $client->dni = $dni;
             $client->email = $email;
-            $client->password = $password;
+            $client->setPassword(password_hash($password, PASSWORD_DEFAULT));
             $client->birthday = $birthday;
             $client->favProduct = $favProduct;
 
@@ -182,7 +181,7 @@ switch ($action) {
         $name = htmlspecialchars(trim($_POST["name"]));
         $dni = htmlspecialchars(trim($_POST["dni"]));
         $email = htmlspecialchars(trim($_POST["email"]));
-        $password = htmlspecialchars(trim($_POST["password"]));
+        $password = htmlspecialchars(trim(  $_POST["password"]));
         $birthday = htmlspecialchars(trim($_POST["birthday"]));
         $favProduct = htmlspecialchars(trim($_POST["favProduct"]));
 
