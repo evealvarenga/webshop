@@ -94,3 +94,7 @@ CREATE TABLE `clients` (
 ) ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `clients` (`id`, `name`, `email`, `dni`, `password`, `admin`, `birthday`, `favProduct`) VALUES 
+(1, 'Admin Lyn', 'lyn@admin.com', '123456789', '$2y$10$5eM6qm0o2x7ZHGHYKczuSO4Bo5/a1s508XZpKoX1.zjmrz6lLwa0u', '1', '1995-01-01', 7),
+(2, 'User Lyn', 'lyn@user.com', '234567891', '$2y$10$5eM6qm0o2x7ZHGHYKczuSO4Bo5/a1s508XZpKoX1.zjmrz6lLwa0u', '0', '1995-01-01', 7);
