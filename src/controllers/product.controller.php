@@ -57,7 +57,7 @@ class ProductController {
                 'message' => 'Producto eliminado correctamente'
             ];
 
-            header("Location: /www/webshop/index.php");
+            header("Location: /www/webshop/index.php?page=AllProducts");
             exit();
         } catch (Exception $e) {
             die($e->getMessage());
@@ -102,7 +102,7 @@ class ProductController {
                 'message' => 'Producto modificado correctamente'
             ];
             
-            header("Location: /www/webshop/index.php");
+            header("Location: /www/webshop/index.php?page=AllProducts");
             exit();
         } catch (Exception $e) {
             header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el producto");

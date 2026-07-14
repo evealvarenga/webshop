@@ -79,7 +79,7 @@ class ClientController {
                 'message' => 'Usuario eliminado correctamente'
             ];
 
-            header("Location: /www/webshop/index.php");
+            header("Location: /www/webshop/index.php?page=AllClients");
             exit();
         } catch (Exception $e) {
             die($e->getMessage());
@@ -113,7 +113,7 @@ class ClientController {
                 'message' => 'Usuario modificado correctamente'
             ];
             
-            header("Location: /www/webshop/index.php");
+            header("Location: /www/webshop/index.php?page=profile");
             exit();
         } catch (Exception $e) {
             header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el usuario");
@@ -139,7 +139,7 @@ class ClientController {
                 'message' => 'Usuario cambiado a administrador correctamente'
             ];
 
-            header("Location: /www/webshop/index.php");
+            header("Location: /www/webshop/index.php?page=AllClients");
             exit();
         } catch (Exception $e) {
             die($e->getMessage());

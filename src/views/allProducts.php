@@ -15,6 +15,34 @@
     }
 ?>
 
+<?php
+if (session_status() === PHP_SESSION_NONE) {session_start();}
+if(isset($_SESSION['toast'])): $toast = $_SESSION['toast'];?>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert">
+        <div class="toast-header">
+            <strong class="me-auto">Sistema</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            <?= $toast['message'] ?>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const toastElement = document.getElementById('liveToast');
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+});
+</script>
+<?php
+unset($_SESSION['toast']);
+endif;
+?>
+
 <section class = profile>
     <div class="container-profile">
         <h2 class="header-profile">
