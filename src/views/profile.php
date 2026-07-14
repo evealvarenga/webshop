@@ -1,3 +1,4 @@
+<?php if (!isset($_SESSION["user"])) {header("Location: /www/webshop/index.php?page=404&error=No has iniciado sesión con tu cuenta."); exit;}?>
 <?php if (session_status() === PHP_SESSION_NONE) {session_start();}?>
 <?php 
     $user = (new Client()) -> getClientByEmail($pdo, $_SESSION["user"]["email"]);
@@ -43,10 +44,10 @@
                     <h4>Bebida favorita</h4>
                     <p><?=$product->getName()?></p>
                 </div>
-                <button class="btn-edit">
+                <a href="index.php?page=changeClient&id=<?= $user->getId() ?>"><button class="btn-edit">
                     <i class="bi bi-pencil-fill"></i>
                     Editar perfil
-                </button>
+                </button></a>
             </div>
         </div>
     </div>
@@ -80,10 +81,10 @@
                     <h4>Bebida favorita</h4>
                     <p><?=$product->getName()?></p>
                 </div>
-                <button class="btn-edit">
+                <a href="index.php?page=changeClient&id=<?= $user->getId() ?>"><button class="btn-edit">
                     <i class="bi bi-pencil-fill"></i>
                     Editar perfil
-                </button>
+                </button></a>
             </div>
         </div>
     </div>

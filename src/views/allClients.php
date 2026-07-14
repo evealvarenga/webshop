@@ -36,6 +36,9 @@
                         <td><?= $user->getName() ?></td>
                         <td><?php if($user->getAdmin()){echo "Administrador";} else {echo "Usuario";} ?></td>
                         <td>
+                            <a href="index.php?page=upgradeClient&id=<?= $user->getId() ?>" class="btn-products"><i class="bi bi-person-up"></i></a>
+                            <a href="index.php?page=changeClient&id=<?= $user->getId() ?>" class="btn-products"><i class="bi bi-person-gear"></i></a>
+                            <a href="index.php?page=deleteClient&id=<?= $user->getId() ?>" class="btn-products"><i class="bi bi-person-x"></i></a>
                         </td>
                     </tr>
                 <?php } ?>

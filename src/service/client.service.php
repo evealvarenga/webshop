@@ -62,6 +62,16 @@ class Client
 
         return $client;
     }
+
+        public function getClientById($db, $id)
+    {
+        $sql = "SELECT * FROM clients WHERE id = $id";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Client::class);
+        $client = $stmt->fetch();
+        return $client;
+    }
    
     public function guardar($pdo)
     {
@@ -81,15 +91,9 @@ class Client
         
     }
 
-
-
-    /*
     public function borrar($pdo)
     {
-        if (!empty($this->img) && file_exists("../assets/products/" . $this->img) && !unlink("../assets/products/" . $this->img)) {
-            throw new Exception("No se pudo borrar");
-        }
-        $sql = "DELETE FROM `products` WHERE `products`.`id` = :id";
+        $sql = "DELETE FROM `clients` WHERE `clients`.`id` = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ":id" => $this->id
@@ -98,27 +102,27 @@ class Client
 
     public function editar($pdo)
     {
-        $sql = "UPDATE `products` SET `name` = :name, `price` = :price, `img` = :img, `category` = :category, `description` = :description WHERE `products`.`id` = :id";
+        $sql = "UPDATE `clients` SET `name` = :name, `email` = :email, `dni` = :dni, `password` = :password, `birthday` = :birthday, `favProduct` = :favProduct WHERE `clients`.`id` = :id";
 
         $stmt = $pdo->prepare($sql);
 
         $stmt->execute([
             ":name" => $this->name,
-            ":price" => $this->price,
-            ":img" => $this->img,
-            ":category" => $this->category,
-            ":description" => $this->description,
+            ":email" => $this->email,
+            ":dni" => $this->dni,
+            ":password" => $this->password,
+            ":birthday" => $this->birthday,
+            ":favProduct" => $this->favProduct,
             ":id" => $this->id
         ]);
     }
 
-    public function getPrice($flag = true)
+    public function upgradear($pdo)
     {
-        return $flag ? "$" . number_format($this->price, 2, ",", ".") : $this->price;
+        $sql = "UPDATE `clients` SET `admin` = '1' WHERE `clients`.`id` = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ":id" => $this->id
+        ]);
     }
-
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }*/
 }

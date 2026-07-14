@@ -61,77 +61,92 @@ class ClientController {
 
         header("Location: /www/webshop/index.php?page=login");
     }
-    /*
-    public function deleteProduct() {
+    
+    public function deleteClient() {
         $id = (int) ($_POST["id"] ?? 0);
 
         try {
             $pdo = (new Conexion())->conectar();
 
-            $product = (new Product())->getProductById($pdo, $id);
-            if( !empty($product) ){
-                $product->borrar($pdo);
+            $client = (new Client())->getClientById($pdo, $id);
+            if( !empty($client) ){
+                $client->borrar($pdo);
             }
 
             session_start();
             $_SESSION['toast'] = [
                 'type' => 'success',
-                'message' => 'Producto eliminado correctamente'
+                'message' => 'Usuario eliminado correctamente'
             ];
 
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
             die($e->getMessage());
-            header("Location: /www/webshop/index.php?page=404&error=No se pudo eliminar el producto");
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo eliminar el usuario");
             exit();
         }
     }
 
-    public function updateProduct($name, $price, $category, $description, $id, $tmp_name, $original_name) {
+    public function updateClient($name, $id, $dni, $email, $password, $birthday, $favProduct) {
         try {
-            if (strlen($name) == 0 || strlen($price) == 0 || strlen($category) == 0 || strlen($description) == 0) {
+            
+            if (strlen($name) == 0 || strlen($dni) == 0 || strlen($email) == 0 || strlen($password) == 0 || strlen($birthday) == 0 || strlen($favProduct) == 0) {
                 throw new Exception("Uno de los campos está vacio");
             }
-
+            
             $pdo = (new Conexion())->conectar();
-            $product = (new product())->getProductById($pdo, $id);
-            $product->name = $name;
-            $product->setprice($price);
-            $product->category = $category;
-            $product->description = $description;
+            $client = (new Client())->getClientById($pdo, $id);
+            $client->name = $name;
+            $client->dni = $dni;
+            $client->email = $email;
+            $client->password = $password;
+            $client->birthday = $birthday;
+            $client->favProduct = $favProduct;
 
-            if (!empty($_FILES["img"]["tmp_name"])) {
-                $tmp_name = $_FILES["img"]["tmp_name"];
-                $original_name = $_FILES["img"]["name"];
-
-                $img = uniqid() . "-" . $original_name;
-
-                move_uploaded_file($tmp_name, "../assets/products/$img");
-
-                if (!empty($product->img) && file_exists("../assets/products/" . $product->img) && !unlink("../assets/products/" . $product->img)) {
-                    throw new Exception("No se pudo borrar");
-                }
-
-                $product->img = $img;
-            }
-
-            $product->editar($pdo);
+            
+            $client->editar($pdo);
 
             session_start();
             $_SESSION['toast'] = [
                 'type' => 'success',
-                'message' => 'Producto modificado correctamente'
+                'message' => 'Usuario modificado correctamente'
             ];
             
             header("Location: /www/webshop/index.php");
             exit();
         } catch (Exception $e) {
-            header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el producto");
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo modificar el usuario");
             exit();
         }
         
-    }*/
+    }
+
+    public function upgradeClient() {
+        $id = (int) ($_POST["id"] ?? 0);
+
+        try {
+            $pdo = (new Conexion())->conectar();
+
+            $client = (new Client())->getClientById($pdo, $id);
+            if( !empty($client) ){
+                $client->upgradear($pdo);
+            }
+
+            session_start();
+            $_SESSION['toast'] = [
+                'type' => 'success',
+                'message' => 'Usuario cambiado a administrador correctamente'
+            ];
+
+            header("Location: /www/webshop/index.php");
+            exit();
+        } catch (Exception $e) {
+            die($e->getMessage());
+            header("Location: /www/webshop/index.php?page=404&error=No se pudo realizar la modificación del usuario");
+            exit();
+        }
+    }
 }
 
 
@@ -149,10 +164,10 @@ switch ($action) {
         $favProduct = htmlspecialchars(trim($_POST["favProduct"]));
 
         $controller->newClient($name, $dni, $email, $password, $birthday, $favProduct);
-        break;
+    break;
     case 'deleteClient':
         $controller->deleteClient();
-        break;
+    break;
     case 'login':
         $email = htmlspecialchars(trim($_POST["email"]));
         $password = htmlspecialchars(trim($_POST["password"]));
@@ -163,15 +178,19 @@ switch ($action) {
         $controller->logout();
     break;
     case 'updateClient':
+        $id = htmlspecialchars(trim($_POST["id"]));
         $name = htmlspecialchars(trim($_POST["name"]));
-        $name = htmlspecialchars(trim($_POST["dni"]));
+        $dni = htmlspecialchars(trim($_POST["dni"]));
         $email = htmlspecialchars(trim($_POST["email"]));
         $password = htmlspecialchars(trim($_POST["password"]));
         $birthday = htmlspecialchars(trim($_POST["birthday"]));
         $favProduct = htmlspecialchars(trim($_POST["favProduct"]));
 
-        $controller->updateClient($name, $dni, $email, $password, $birthday, $favProduct);
-        break;
+        $controller->updateClient($name, $id, $dni, $email, $password, $birthday, $favProduct);
+    break;
+    case 'upgradeClient':
+        $controller->upgradeClient();
+    break;
     default:
         die("Acción no válida");
 }

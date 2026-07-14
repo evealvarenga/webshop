@@ -15,13 +15,21 @@
 
 <div class="container-profile">
     <h2 class="header-profile">
-        <span></span> Crear un nuevo usuario
+        <span></span> Registro
     </h2>
     <div class="profile-card">
         <form action="src/controllers/client.controller.php?action=newClient" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Nombre</label>
-                <input type="text" name="name" class="form-control" id="floatingInputGrid">
+                <input 
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    minlength="3"
+                    maxlength="50"
+                    pattern="[A-Za-z0-9áéíóúÁÉÍÓÚñÑ\s]+"
+                    title="Solo se aceptan letras o espacios"
+                    required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">DNI</label>
